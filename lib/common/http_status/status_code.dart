@@ -1,0 +1,11 @@
+const int unauthorized = 401;
+const int success = 200;
+const int created = 201;
+const int noContent = 204;
+const int badRequest = 400;
+const int notFound = 404;
+const int internalServerError = 500;
+const int badGateway = 502;
+const int serviceUnavailable = 503;
+const int gatewayTimeout = 504;
+const int refreshTokenExpired = 498;
