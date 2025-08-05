@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:youcancode/common/extension/string_hardcoded.dart';
 import 'package:youcancode/features/signup/presentation/ui/widgets/signup_form_list.dart';
 import 'package:youcancode/l10n/app_localizations.dart';
 
