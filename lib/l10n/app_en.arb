@@ -1,0 +1,9 @@
+{
+"email": "Email",
+"changeLanguage" : "Change Language",
+"passowrd" : "Passowrd",
+"login" : "Login",
+"signup":"Sign Up",
+"home" : "Home",
+"profile" : "Profile" 
+}

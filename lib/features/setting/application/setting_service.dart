@@ -31,4 +31,13 @@ final class SettingService implements IsettingService {
       rethrow;
     }
   }
+
+  @override
+  Future<void> setLanguage(String language) async {
+    try {
+      await _settingRepository.setLanguage(language);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

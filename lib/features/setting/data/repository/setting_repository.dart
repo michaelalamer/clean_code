@@ -31,4 +31,13 @@ final class SettingRepository implements ISettingRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> setLanguage(String language) async {
+    try {
+      await _settingStorage.setLanguage(language);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

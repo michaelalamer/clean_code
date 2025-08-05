@@ -45,57 +45,61 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  labelText: 'Email'.hardcoded,
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(kSmall)),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'Email'.hardcoded,
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(kSmall)),
+                    ),
+                    prefix: const Icon(Icons.email),
                   ),
-                  prefix: const Icon(Icons.email),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email'.hardcoded;
+                    } else if (!RegExp(
+                      r'^[^@]+@[^@]+\.[^@]+',
+                    ).hasMatch(value)) {
+                      return 'Please enter a valid email'.hardcoded;
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email'.hardcoded;
-                  } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                    return 'Please enter a valid email'.hardcoded;
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: kMedium),
-              TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password'.hardcoded,
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(kSmall)),
+                const SizedBox(height: kMedium),
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password'.hardcoded,
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(kSmall)),
+                    ),
+                    prefix: const Icon(Icons.lock),
                   ),
-                  prefix: const Icon(Icons.lock),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password'.hardcoded;
+                    } else if (value.length < 8) {
+                      return 'Password must be at least 8 characters long'
+                          .hardcoded;
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password'.hardcoded;
-                  } else if (value.length < 8) {
-                    return 'Password must be at least 8 characters long'
-                        .hardcoded;
-                  }
-                  return null;
-                },
-              ),
-              const ForgotPassword(),
-              const SizedBox(height: kSmall),
-              LoginButton(onPressed: _login),
-              const SizedBox(height: kLarge),
-              const LoginWith(),
-              const SizedBox(height: kLarge),
-              const DontHaveAccount(),
-            ],
+                const ForgotPassword(),
+                const SizedBox(height: kSmall),
+                LoginButton(onPressed: _login),
+                const SizedBox(height: kLarge),
+                const LoginWith(),
+                const SizedBox(height: kLarge),
+                const DontHaveAccount(),
+              ],
+            ),
           ),
         ),
       ),

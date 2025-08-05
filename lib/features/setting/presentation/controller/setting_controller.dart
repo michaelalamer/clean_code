@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:youcancode/core/provider/auth_state_provider.dart';
+import 'package:youcancode/core/provider/language_notifier.dart';
 import 'package:youcancode/core/provider/theme_mode_notifier.dart';
 import 'package:youcancode/features/setting/application/setting_service.dart';
 import 'package:youcancode/features/setting/presentation/state/setting_state.dart';
@@ -29,5 +30,10 @@ class SettingController extends Notifier<SettingState> {
         .setTheme(
           themeModeState == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
         );
+  }
+
+  Future<void> setLanguage(String language) async {
+    await ref.read(settingServiceProvider).setLanguage(language);
+    ref.read(languageNotifierProvider.notifier).setLanguage(Locale(language));
   }
 }

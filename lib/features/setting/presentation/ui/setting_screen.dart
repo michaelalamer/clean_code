@@ -32,6 +32,22 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
                 },
                 child: Text('Toogle Theme'.hardcoded),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  ref
+                      .read(settingControllerProvider.notifier)
+                      .setLanguage('ar');
+                },
+                child: Text('Set Language Arabic'.hardcoded),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  ref
+                      .read(settingControllerProvider.notifier)
+                      .setLanguage('en');
+                },
+                child: Text('Set Language English'.hardcoded),
+              ),
             ],
           ),
         ),

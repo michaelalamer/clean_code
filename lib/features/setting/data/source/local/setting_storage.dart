@@ -32,4 +32,10 @@ class SetingStorage implements ISettingStorage {
       await _secureStorage.write(key: darkModeKey, value: "true");
     }
   }
+
+  @override
+  Future<void> setLanguage(String language) async {
+    await _secureStorage.delete(key: languageKey);
+    await _secureStorage.write(key: languageKey, value: language);
+  }
 }

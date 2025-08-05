@@ -38,7 +38,6 @@ final class LoginRepository
 
       return response;
     } on DioException catch (e, s) {
-      print("--------------------------------");
       throw mapDioExceptionToFailure(e, s);
     } catch (e, s) {
       throw Failure(
