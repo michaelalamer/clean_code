@@ -28,4 +28,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile => 'الملف';
+
+  @override
+  String get forgotPassword => 'هل نسيت كلمة المرور؟';
 }
