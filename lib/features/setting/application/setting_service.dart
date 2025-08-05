@@ -22,4 +22,13 @@ final class SettingService implements IsettingService {
       rethrow;
     }
   }
+
+  @override
+  Future<void> toogleTheme() async {
+    try {
+      await _settingRepository.toogleTheme();
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

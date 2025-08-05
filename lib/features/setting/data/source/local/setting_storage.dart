@@ -20,4 +20,16 @@ class SetingStorage implements ISettingStorage {
     await _secureStorage.delete(key: accessTokenKey);
     await _secureStorage.delete(key: refreshTokenKey);
   }
+
+  @override
+  Future<void> toogleTheme() async {
+    final isDark = await _secureStorage.read(key: darkModeKey);
+    if (isDark.toString() == "true") {
+      await _secureStorage.delete(key: darkModeKey);
+      await _secureStorage.write(key: darkModeKey, value: "false");
+    } else {
+      await _secureStorage.delete(key: darkModeKey);
+      await _secureStorage.write(key: darkModeKey, value: "true");
+    }
+  }
 }

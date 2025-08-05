@@ -22,4 +22,13 @@ final class SettingRepository implements ISettingRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> toogleTheme() async {
+    try {
+      await _settingStorage.toogleTheme();
+    } catch (_) {
+      rethrow;
+    }
+  }
 }

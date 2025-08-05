@@ -9,7 +9,10 @@ part of 'signup_api.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _SignupApi implements SignupApi {
-  _SignupApi(this._dio, {this.baseUrl});
+  _SignupApi(
+    this._dio, {
+    this.baseUrl,
+  });
 
   final Dio _dio;
 
@@ -20,19 +23,24 @@ class _SignupApi implements SignupApi {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body.toJson();
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-      _setStreamType<SignUpResponse>(
-        Options(method: 'POST', headers: _headers, extra: _extra)
+    final _data = body;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SignUpResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
             .compose(
               _dio.options,
               '/api/v1/auth/signup',
               queryParameters: queryParameters,
               data: _data,
             )
-            .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-      ),
-    );
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     final value = SignUpResponse.fromJson(_result.data!);
     return value;
   }
@@ -50,7 +58,10 @@ class _SignupApi implements SignupApi {
     return requestOptions;
   }
 
-  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

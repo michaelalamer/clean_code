@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:youcancode/core/data/local/secure_storage/secure_storage.dart';
 import 'package:youcancode/core/data/local/secure_storage/secure_storage_const.dart';
 import 'package:youcancode/core/provider/auth_state_provider.dart';
+import 'package:youcancode/core/provider/theme_mode_notifier.dart';
 
 part 'start_up_provider.g.dart';
 
@@ -10,7 +12,15 @@ part 'start_up_provider.g.dart';
 Future<void> startUp(Ref ref) async {
   final secureStorage = ref.watch(secureStorageProvider);
   final accessToken = await secureStorage.read(key: accessTokenKey);
-
+  final isDarkStr = await secureStorage.read(key: darkModeKey);
+  if (isDarkStr == null) {
+    await secureStorage.write(key: darkModeKey, value: "false");
+  }
+  if (isDarkStr != null && isDarkStr == "true") {
+    ref.read(themeModeProvider.notifier).setTheme(ThemeMode.dark);
+  } else {
+    ref.read(themeModeProvider.notifier).setTheme(ThemeMode.light);
+  }
   if (accessToken != null) {
     ref.read(authStateProvider.notifier).setAuthState(true);
   }
