@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:youcancode/core/provider/auth_state_provider.dart';
-import 'package:youcancode/core/provider/theme_mode_notifier.dart';
 import 'package:youcancode/core/route/route_name.dart';
 import 'package:youcancode/features/home/presentation/ui/home_screen.dart';
 import 'package:youcancode/features/login/presentation/ui/login_screen.dart';
