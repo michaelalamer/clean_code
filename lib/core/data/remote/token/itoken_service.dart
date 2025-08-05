@@ -1,4 +1,4 @@
-import 'package:youcancode/common/dtos/refresh_token_response.dart';
+import 'package:youcancode/core/data/remote/dtos/refresh_token_response.dart';
 
 abstract interface class ITokenService {
   Future<String?> getAccessToken();

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:youcancode/common/dtos/refresh_token_response.dart';
+import 'package:youcancode/core/data/remote/dtos/refresh_token_response.dart';
 import 'package:youcancode/common/http_status/status_code.dart';
 import 'package:youcancode/core/data/local/secure_storage/isecure_storage.dart';
 import 'package:youcancode/core/data/local/secure_storage/secure_storage.dart';
